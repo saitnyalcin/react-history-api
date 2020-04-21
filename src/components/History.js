@@ -7,6 +7,7 @@ export default function History() {
   const [data, setData] = useState([]);
 
   async function fetchData() {
+    // set fetch library to retrieve the data
     const result = await fetch(
       'https://cors-anywhere.herokuapp.com/http://history.muffinlabs.com/date',
       {
