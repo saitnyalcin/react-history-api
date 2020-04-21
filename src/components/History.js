@@ -22,12 +22,15 @@ export default function History() {
     result.json().then(result => setData(result));
   }
 
+  var today = new Date().toDateString();
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <div>
+      <div>Today Date : {today}</div>
       {Object.keys(data)
         .slice(0, 1)
         .map(item => (
