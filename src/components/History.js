@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import Events from '../components/Events';
-import Deaths from '../components/Deaths';
-import Births from '../components/Births';
+import React, { useEffect, useState } from "react";
+import Events from "../components/Events";
+import Deaths from "../components/Deaths";
+import Births from "../components/Births";
 
 export default function History() {
   const [data, setData] = useState([]);
@@ -9,17 +9,17 @@ export default function History() {
   async function fetchData() {
     // set fetch library to retrieve the data
     const result = await fetch(
-      'https://cors-anywhere.herokuapp.com/http://history.muffinlabs.com/date',
+      "https://cors-anywhere.herokuapp.com/http://history.muffinlabs.com/date",
       {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json'
-        }
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
       }
     );
 
-    result.json().then(result => setData(result));
+    result.json().then((result) => setData(result));
   }
 
   var today = new Date().toDateString();
@@ -33,7 +33,7 @@ export default function History() {
       <div>Today Date : {today}</div>
       {Object.keys(data)
         .slice(0, 1)
-        .map(item => (
+        .map((item) => (
           <div key={item}>
             <div className="container">
               <div className="Event">
@@ -45,7 +45,7 @@ export default function History() {
                     Events
                   </h1>
                 </div>
-                {data.data.Events.map(item => (
+                {data.data.Events.map((item) => (
                   <div key={item.text}>
                     <div>
                       <Events text={item.text} year={item.year} />
@@ -63,7 +63,7 @@ export default function History() {
                     Deaths
                   </h1>
                 </div>
-                {data.data.Deaths.map(item => (
+                {data.data.Deaths.map((item) => (
                   <div key={item.text}>
                     <div>
                       <Deaths text={item.text} year={item.year} />
@@ -81,7 +81,7 @@ export default function History() {
                     Births
                   </h1>
                 </div>
-                {data.data.Births.map(item => (
+                {data.data.Births.map((item) => (
                   <div key={item.text}>
                     <div>
                       <Births text={item.text} year={item.year} />
